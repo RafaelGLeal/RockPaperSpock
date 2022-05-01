@@ -1,0 +1,347 @@
+@import 'abstracts/__abstracts-dir';
+@import 'base/__base-dir';
+@import 'components/__components-dir';
+
+body{
+    box-sizing: border-box;
+    max-width: 1440px;
+    margin: 0 auto;
+    background-image: linear-gradient($bg-gradient);
+    background-repeat: no-repeat;
+    font-size: 15px;
+    overflow-x: hidden;
+    a,p,h1,h2,h3,h4,li,button,span{
+        font-family: $font;
+        color: $white;
+        text-transform: uppercase;
+        font-size: 1em;
+    }
+    img{
+        max-width: 90%;
+    }
+}
+
+.container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    padding-bottom: 100px;
+    .score{
+        width: 70vw;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 3vh;
+        border:.2em solid $header-outline;
+        border-radius: .4em;
+        padding: 1em 1.5em ;
+        li{
+            font-weight: $font-bold;
+            line-height: .9em;
+        }
+        .points{
+            padding: 1em 1.5em;
+            border-radius: .4em;
+            background-color: $white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            h2, p{
+                font-weight: $font-bold;
+                color: $dark-text;
+            }
+            h2{
+                font-size: .9em;
+                color: $score-text;
+                letter-spacing: 2px;
+            }
+            p{
+                font-size: 3em;
+            }
+        }
+    }
+    .game{
+        width: 60vw;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 10vh auto 20vh;
+        position: relative;
+        .start-container.active{
+            grid-template-areas: 
+            ". . ."
+            "active . house"
+            ". . ."
+            ;
+            visibility: hidden;
+            .btn-game.active{
+                visibility: visible;
+                margin: 0;
+                margin-right: 7em;
+                pointer-events: none;
+                grid-area: active;
+                transition: .5s ease;
+                p{
+                    visibility: visible;
+                }
+            }
+        }
+        .btn-game.house-pick{
+            visibility: visible;
+            pointer-events: none;
+            margin: 0 !important;
+            animation: iconOpacity .6s;
+            grid-area: house !important;
+            .house-span{
+                visibility: visible !important;
+                left: -10px;
+            }
+        }
+        .start-container{
+            grid-template-rows: repeat(3, 1fr);
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-areas: 
+                ". scissor ."
+                "spock . paper"
+                "lizard . rock"
+            ;
+            width: 100%;
+            height: 100%;
+            display: grid;
+            place-items: center;
+            position: relative;
+            z-index: 1;
+            &::before{
+                content: '';
+                position: absolute;
+                background-image: url(/src/images/bg-pentagon.svg);
+                width: 90%;
+                height: 90%;
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: center;
+            }
+            .btn-game{
+                cursor: pointer;
+                min-width: 10vh;
+                min-height: 10vh;
+                padding: 10px;
+                border-radius: 50%;
+                position: relative;
+                display: grid;
+                place-items: center;
+                background-color: $white;
+                z-index: 10;
+                img{
+                    max-width: 60%;
+                    pointer-events: none;
+                }
+                p{
+                    width: 100px;
+                    left: 5%;
+                    position: absolute;
+                    bottom: -70%;
+                    visibility: hidden;
+                    pointer-events: none;
+                }
+                .house-span{
+                    width: 100px;
+                    position: absolute;
+                    color: $white;
+                    pointer-events: none;
+                    visibility: hidden;
+                    bottom: -70%;
+                    width: 200px;
+                }
+                
+                .ripple-effect{
+                    position: absolute;
+                    background-color: #f4f4f409;
+                    width: 200%;
+                    height: 200%;
+                    border-radius: 50%;
+                    z-index: -200;
+                    animation: ripple .6s ease;
+                    pointer-events: none;
+                }
+                .ripple-effect:nth-of-type(2){
+                    width: 300%;
+                    height: 300%;
+                    animation: ripple2 .7s ease;
+                }
+                .ripple-effect:nth-of-type(3){
+                    width: 400%;
+                    height: 400%;
+                    animation: ripple3 .8s ease;
+                }
+            }
+            
+            .btn-game:nth-child(1){
+                grid-area: scissor;
+                position: relative;
+                z-index: 1;
+                background-color: blue;
+                @include border-btn;
+            }
+            .btn-game:nth-child(2){
+                grid-area: spock;
+                position: relative;
+                margin-right: 70%;
+                z-index: 1;
+                @include border-btn;
+                &::before{
+                    background-image: linear-gradient($cyan);
+                }
+            }
+            .btn-game:nth-child(3){
+                grid-area: paper;
+                position: relative;
+                margin-left: 70%;
+                z-index: 1;
+                @include border-btn;
+                &::before{
+                    background-image: linear-gradient($paper-gradient);
+                }
+            }
+            .btn-game:nth-child(4){
+                grid-area: lizard;
+                margin-left: 50%;
+                margin-top: 30%;
+                position: relative;
+                z-index: 1;
+                @include border-btn;
+                &::before{
+                    background-image: linear-gradient($lizard-gradient);
+                }
+            }
+            .btn-game:nth-child(5){
+                grid-area: rock;
+                margin-right: 50%;
+                margin-top: 30%;
+                position: relative;
+                z-index: 1;
+                @include border-btn;
+                &::before{
+                    background-image: linear-gradient($rock-gradient);
+                }
+            }
+        }
+    }
+    .result-text.showResult{
+        display: flex;
+    }
+    .result-text{
+        flex-direction: column;
+        position: absolute;
+        bottom: -20%;
+        display: none;
+        gap: 2em;
+        h2{
+            font-size: 4em;
+            font-weight: $font-bold;
+        }
+        button{
+            background-color: $white;
+            color: $dark-text;
+            border: none;
+            padding: 1em 2.8em;
+            letter-spacing: 2px;
+            border-radius: .5em;
+        }
+    }
+    .rules-btn{
+        position: absolute;
+        bottom: -50%;
+        left: 25%;
+        right: 25%;
+        background-color: transparent;
+        outline: none;
+        border: 2px solid $header-outline;
+        border-radius: .5em;
+        padding: .7em 2.4em;
+        letter-spacing: 2px;
+        font-weight: $font-semiBold;
+        cursor: pointer;
+    }
+    .modal{
+        visibility: hidden;
+        position: absolute;
+        background-color: $white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 80px;
+        top: -55%;
+        width: 80vw;
+        height: 90vh;
+        z-index: 2;
+        transform: translateY(-100%);
+        transition: .3s ease-in;
+        h3{
+            color: $dark-text;
+            font-weight: $font-bold;
+            font-size: 2em;
+        }
+        .rules-img{
+            max-width: 90%;
+            margin: 0 auto;
+            img{
+                max-width: 100%;
+            }
+        }
+        .close-modal{
+            cursor: pointer;
+        }
+    }
+    .modal.active{
+        transition: .3s ease-in;
+        transform: translateY(0);
+        visibility: visible;
+    }
+}
+
+@media only screen and (min-width: 800px) {
+    .score{
+        width: 40vw !important;
+    }
+    .game{
+        width: 20vw !important;
+        height: 60vh !important;
+    }
+    .start-container{
+        &::before{
+            width: 110% !important;
+            height: 110% !important;
+        }
+    }
+    .btn-game{
+        min-width: 13vh !important;
+        min-height: 13vh !important;
+    }
+    .btn-game:nth-child(1){
+        margin-bottom: 20%;
+        margin-right: 50%;
+    }
+    .btn-game:nth-child(2){
+        margin-right: 120% !important;
+        margin-bottom: 30%;
+    }
+    .btn-game:nth-child(3){
+        margin-right: 10%;
+        margin-bottom: 30%;
+    }
+    .btn-game:nth-child(4){
+        margin-left: 0% !important;
+    }
+    .modal.modal.active{
+        top: -50% !important;
+    }
+    .rules-btn{
+        left: 200% !important;
+        bottom: -30% !important;
+    }
+}

@@ -1,0 +1,41 @@
+@keyframes ripple {
+    0%{
+        width: 0;
+        height: 0;
+    }
+    100%{
+        width: 200%;
+        height: 200%;
+    }
+}
+@keyframes ripple2 {
+    0%{
+        width: 0;
+        height: 0;
+    }
+    100%{
+        width: 300%;
+        height: 300%;
+    }
+}
+@keyframes ripple3 {
+    0%{
+        width: 0;
+        height: 0;
+    }
+    100%{
+        width: 400%;
+        height: 400%;
+    }
+}
+@keyframes iconOpacity {
+    0%{
+        opacity: 0;
+    }
+    90%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}

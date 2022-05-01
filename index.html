@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap" rel="stylesheet"> 
+  <link rel="stylesheet" href="/src/style/main.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="/src/images/favicon-32x32.png">
+
+  <title>Frontend Mentor | Rock, Paper, Scissors</title>
+
+</head>
+<body>
+  <div class="container">
+    <div class="score">
+      <ul>
+        <li>rock</li>
+        <li>paper</li>
+        <li>scissors</li>
+        <li>lizard</li>
+        <li>spock</li>
+      </ul>
+      <div class="points">
+        <h2>score</h2>
+        <p class="points-count">0</p>
+      </div>
+    </div>
+
+    <div class="game">
+      <div class="start-container">
+        <div class="scissors btn-game" id="0"> 
+            <img src="/src/images/icon-scissors.svg" alt="">
+            <p>you picked</p>
+            <span class="house-span">the house picked</span>
+        </div>
+        <div class="spock btn-game" id="1">
+          <img src="/src/images/icon-spock.svg" alt="">
+          <p>you picked</p>
+          <span class="house-span">the house picked</span>
+      </div>
+        <div class="paper btn-game" id="2">
+            <img src="/src/images/icon-paper.svg" alt="">
+            <p>you picked</p>
+            <span class="house-span">the house picked</span>
+        </div>
+        <div class="lizard btn-game" id="3">
+            <img src="/src/images/icon-lizard.svg" alt="">
+            <p>you picked</p>
+            <span class="house-span">the house picked</span>
+        </div>
+        <div class="rock btn-game" id="4">
+            <img src="/src/images/icon-rock.svg" alt="">
+            <p>you picked</p>
+            <span class="house-span">the house picked</span>
+      </div>
+    </div>
+    <div class="result-text">
+      <h2>You win</h2>
+      <button class="play-again">play again</button>
+    </div>
+    <button class="rules-btn">
+      rules
+    </button>
+    <div class="modal">
+      <h3>rules</h3>
+      <div class="rules-img">
+        <img src="/src/images/image-rules-bonus.svg" alt="">
+      </div>
+      <div class="close-modal">
+        <img src="/src/images/icon-close.svg" alt="">
+      </div>
+    </div>
+  </div>
+
+  <script src="/src/script/index.js"></script>
+</body>
+</html>
