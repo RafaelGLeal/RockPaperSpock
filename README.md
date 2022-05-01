@@ -30,7 +30,7 @@ Users should be able to:
 
 ### Links
 
-- [Solution](https://github.com/RafaelGLeal/RockPaperScissors-Game/)
+- [Live](https://rockpaperscissorlizardspock.netlify.app/)
 
 ## My process
 
